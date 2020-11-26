@@ -29,7 +29,9 @@ namespace prodamjuntocomcidadao_web
                 options.UseMySQL(Configuration.GetConnectionString("prodamjuntocomcidadaoConnection"))
             );
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

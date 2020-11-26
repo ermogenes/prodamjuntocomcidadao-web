@@ -1,9 +1,93 @@
-#nova-mensagem {
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+body {
+    background-color: #282a36;
+    color: #8be9fd;
+    font-family: 'Noto Serif', serif;
+    font-size: 20px;
     display: flex;
     flex-flow: column;
-    max-width: 300px;
+    justify-content: flex-start;
+    align-items: center;
 }
 
-#nova-mensagem > * {
+body > * {
     flex: 1;
+    max-width: 600px;
+}
+
+h1, h2, h3 {
+    color: #ffb86c;
+}
+
+select, textarea, input {
+    background-color: #44475a;
+    color: #8be9fd;
+    font-family: 'Noto Serif', serif;
+    font-size: 20px;
+    border: 0;
+    border-radius: 5px;
+    border-right: 1px solid #ffb86c;
+    border-bottom: 3px solid #ffb86c;
+    padding: 5px;
+    margin: 5px;
+}
+
+#novo-texto {
+    min-height: 150px;
+}
+
+#nova-mensagem,
+#novo-detalhes,
+#feed {
+    display: flex;
+    flex-flow: column;
+}
+
+#nova-mensagem > *,
+#novo-detalhes > *,
+#feed > * {
+    flex: 1;
+}
+
+#novo-confirmar {
+    display: block;
+    color: #ffb86c;
+    font-weight: bold;
+    border: 0;
+    border-radius: 5px;
+    border-right: 1px solid #8be9fd;
+    border-bottom: 3px solid #8be9fd;
+    padding: 15px;
+    margin: 5px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #bd93f9;
+}
+
+a:hover {
+    cursor: pointer;    
+}
+
+a.discreto {
+    flex: 1;
+    font-size: 0.8em;
+    display: block;
+    text-align: right;
+}
+
+.visivel {
+    display: block;
+}
+
+.invisivel {
+    display: none !important;
+}
+
+#novo-abandonar,
+#novo-detalhes-abrir {
+    padding: 25px 0;
 }

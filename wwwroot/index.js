@@ -1,3 +1,23 @@
+const abrirDetalhes = (e) => {
+    e.preventDefault();
+    const detalhes = document.getElementById("novo-detalhes");
+    detalhes.classList.remove("invisivel");
+    const self = e.currentTarget;
+    self.outerHTML = "";
+};
+
+const abandonar = (e) => {
+    e.preventDefault();
+    const feed = document.getElementById("feed");
+    feed.classList.remove("invisivel");
+
+    const novo = document.getElementById("nova-mensagem");
+    novo.outerHTML = "";
+
+    const self = e.currentTarget;
+    self.outerHTML = "";
+};
+
 const curtir = async (e) => {
     e.preventDefault();
     const link = e.currentTarget;
@@ -88,6 +108,8 @@ const preencheListas = async () => {
 const configuraEventos = () => {
     document.getElementById("novo-confirmar").addEventListener("click", enviaMensagem);
     document.querySelectorAll("a.curtir").forEach(btn => btn.addEventListener("click", curtir));
+    document.getElementById("novo-abandonar").addEventListener("click", abandonar);
+    document.getElementById("novo-detalhes-abrir").addEventListener("click", abrirDetalhes);
 };
 
 const iniciar = async () => {

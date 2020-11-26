@@ -7,35 +7,49 @@
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
+    <h1>Prodam Junto com Cidadão</h1>
     <div id="nova-mensagem">
-        <label for="novo-tipo">Tipo</label>
-        <select id="novo-tipo" name="novo-tipo">
-            <option value="">-- sem tipo específico --</option>
-        </select>
+        <h2>Escreva sua mensagem</h2>
         
-        <label for="novo-local">Local</label>
-        <select id="novo-local" name="novo-local">
-            <option value="">-- sem local específico --</option>
-        </select>
-        
-        <label for="novo-tema">Tipo</label>
-        <select id="novo-tema" name="novo-tema">
-            <option value="">-- sem tema específico --</option>
-        </select>
-
         <label for="novo-texto">Texto</label>
         <textarea id="novo-texto"></textarea>
+        
+        <a href="#" class="discreto" id="novo-detalhes-abrir">mais...</a>
+
+        <div id="novo-detalhes" class="invisivel">
+            <label for="novo-tipo">Tipo</label>
+            <select id="novo-tipo" name="novo-tipo">
+                <option value="">-- sem tipo específico --</option>
+            </select>
+            
+            <label for="novo-local">Local</label>
+            <select id="novo-local" name="novo-local">
+                <option value="">-- sem local específico --</option>
+            </select>
+            
+            <label for="novo-tema">Tema</label>
+            <select id="novo-tema" name="novo-tema">
+                <option value="">-- sem tema específico --</option>
+            </select>
+        </div>
 
         <a href="#" id="novo-confirmar">Enviar</a>
     </div>
-    <h2>Mensagens</h2>
-    <ul id="mensagens"></ul>
-    <h2>Locais</h2>
-    <ul id="locais"></ul>
-    <h2>Tipos</h2>
-    <ul id="tipos"></ul>
-    <h2>Temas</h2>
-    <ul id="temas"></ul>
+
+    <a href="#" class="discreto" id="novo-abandonar">Agora, não. Mostre-me os existentes.</a>
+
+    <div id="feed" class="invisivel">
+        <h2>Mensagens</h2>
+        <ul id="mensagens"></ul>
+        <h2>Locais</h2>
+        <ul id="locais"></ul>
+        <h2>Tipos</h2>
+        <ul id="tipos"></ul>
+        <h2>Temas</h2>
+        <ul id="temas"></ul>
+    </div>
+    
     <script src="index.js"></script>
+    
 </body>
 </html>

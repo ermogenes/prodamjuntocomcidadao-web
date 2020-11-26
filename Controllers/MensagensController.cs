@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using prodamjuntocomcidadao_web.db;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace prodamjuntocomcidadao_web.Controllers
 {
@@ -19,6 +20,9 @@ namespace prodamjuntocomcidadao_web.Controllers
         public List<Mensagem> ObtemMensagens()
         {
             var todasAsMensagens = _db.Mensagem
+                .Include(msg => msg.Local)
+                .Include(msg => msg.Tema)
+                .Include(msg => msg.Tipo)
                 .OrderByDescending(msg => msg.Curtidas)
                 .ToList<Mensagem>();
             return todasAsMensagens;
