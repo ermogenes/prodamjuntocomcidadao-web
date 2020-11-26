@@ -23,5 +23,21 @@ namespace prodamjuntocomcidadao_web.Controllers
                 .ToList<Local>();
             return todosOsLocais;
         }
+
+        [HttpPatch("{id}/curtir")]
+        public ActionResult<dynamic> CurteLocal(string id) {
+            var local = _db.Local
+                .SingleOrDefault(local => local.Id == id);
+            
+            if (local == null)
+            {
+                return BadRequest();
+            }
+
+            local.Curtidas += 1;
+            _db.SaveChanges();
+
+            return Ok(new { Curtidas = local.Curtidas });
+        }
     }
 }

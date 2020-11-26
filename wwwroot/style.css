@@ -1,0 +1,9 @@
+#nova-mensagem {
+    display: flex;
+    flex-flow: column;
+    max-width: 300px;
+}
+
+#nova-mensagem > * {
+    flex: 1;
+}

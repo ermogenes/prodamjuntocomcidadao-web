@@ -23,5 +23,21 @@ namespace prodamjuntocomcidadao_web.Controllers
                 .ToList<Tipo>();
             return todosOsTipos;
         }
+
+        [HttpPatch("{id}/curtir")]
+        public ActionResult<dynamic> CurteTipo(string id) {
+            var tipo = _db.Tipo
+                .SingleOrDefault(tipo => tipo.Id == id);
+            
+            if (tipo == null)
+            {
+                return BadRequest();
+            }
+
+            tipo.Curtidas += 1;
+            _db.SaveChanges();
+
+            return Ok(new { Curtidas = tipo.Curtidas });
+        }
     }
 }

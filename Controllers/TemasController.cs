@@ -23,5 +23,22 @@ namespace prodamjuntocomcidadao_web.Controllers
                 .ToList<Tema>();
             return todosOsTemas;
         }
+
+        [HttpPatch("{id}/curtir")]
+        public ActionResult<dynamic> CurteTema(string id) {
+            var tema = _db.Tema
+                .SingleOrDefault(tema => tema.Id == id);
+            
+            if (tema == null)
+            {
+                return BadRequest();
+            }
+
+            tema.Curtidas += 1;
+            _db.SaveChanges();
+
+            return Ok(new { Curtidas = tema.Curtidas });
+        }
+
     }
 }
