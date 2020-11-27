@@ -4,8 +4,9 @@ Repositório do projeto [prodamjuntocomcidadao], Hackathon Prodam 2020/11.
 
 ![Prodam Junto com Cidadão](wwwroot/logo.juntocomocidadao-dark.svg)
 
-- [💻 Aplicação](https://prodamjuntocomcidadao.azurewebsites.net/)
+- [💻 Aplicação em produção](https://prodamjuntocomcidadao.azurewebsites.net/)
 - [🐱‍💻 Código-fonte (web)](https://github.com/ermogenes/prodamjuntocomcidadao-web)
+- [📱 Código-fonte (app)](https://github.com/thidulb/Junto-com-cidadao-App)
 - [🛢 Banco de dados](https://github.com/ermogenes/prodamjuntocomcidadao-mysql)
 
 ## Proposta
