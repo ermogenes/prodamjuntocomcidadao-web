@@ -17,7 +17,7 @@ namespace prodamjuntocomcidadao_web.Controllers
         }
 
         [HttpGet]
-        public List<Mensagem> ObtemMensagens()
+        public ActionResult<List<Mensagem>> ObtemMensagens()
         {
             var todasAsMensagens = _db.Mensagem
                 .Include(msg => msg.Local)
@@ -25,7 +25,7 @@ namespace prodamjuntocomcidadao_web.Controllers
                 .Include(msg => msg.Tipo)
                 .OrderByDescending(msg => msg.Curtidas)
                 .ToList<Mensagem>();
-            return todasAsMensagens;
+            return Ok(todasAsMensagens);
         }
 
         [HttpPatch("{id}/curtir")]
@@ -51,7 +51,7 @@ namespace prodamjuntocomcidadao_web.Controllers
             mensagem.Curtidas = 0;
             _db.Add(mensagem);
             _db.SaveChanges();
-            return CreatedAtAction(null, mensagem.Id, mensagem);
+            return CreatedAtAction(nameof(ObtemMensagens), null, mensagem);
         }
     }
 }

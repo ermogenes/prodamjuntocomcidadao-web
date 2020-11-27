@@ -91,3 +91,50 @@ a.discreto {
 #novo-detalhes-abrir {
     padding: 25px 0;
 }
+
+#feed {
+    display: flex;
+    flex-flow: column;
+}
+
+#feed > * {
+    flex: 1;
+    width: 500px;
+    display: block;
+}
+
+.mensagem-container {
+    display: flex;
+    flex-flow: column;
+    background-color: #44475a;
+    border-left: 1px solid #ffb86c;
+    border-bottom: 2px solid #ffb86c;
+    border-radius: 10px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.mensagem-container > * {
+    flex: 1;
+}
+
+.mensagem-container .curtir {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.mensagem-texto {
+    min-height: 100px;
+    padding: 10px;
+    flex: 1 0 auto;
+    color: #ffb86c;
+}
+
+.mensagem-tipo,
+.mensagem-local,
+.mensagem-tema {
+    font-size: 0.75em;
+    padding: 10px;
+    display: inline-block;
+}

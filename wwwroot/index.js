@@ -6,15 +6,19 @@ const abrirDetalhes = (e) => {
     self.outerHTML = "";
 };
 
-const abandonar = (e) => {
+const abandonar = async (e) => {
     e.preventDefault();
+    const self = e.currentTarget;
+    self.innerHTML = "carregando...";
+
     const feed = document.getElementById("feed");
     feed.classList.remove("invisivel");
+
+    preencheFeed();
 
     const novo = document.getElementById("nova-mensagem");
     novo.outerHTML = "";
 
-    const self = e.currentTarget;
     self.outerHTML = "";
 };
 
@@ -42,6 +46,9 @@ const curtir = async (e) => {
 const enviaMensagem = async (e) => {
     e.preventDefault();
 
+    const botao = document.getElementById("novo-abandonar");
+    botao.innerHTML = "carregando...";
+
     const mensagem = {
         "TipoId": document.getElementById("novo-tipo")?.value,
         "LocalId": document.getElementById("novo-local")?.value,
@@ -57,7 +64,7 @@ const enviaMensagem = async (e) => {
         body: JSON.stringify(mensagem),
     });
     if (response.ok) {
-        alert("Criado!");
+        botao.dispatchEvent(new Event("click"));
     } else {
         alert("Erro!");
     }
@@ -96,18 +103,29 @@ const preencheListas = async () => {
     resultLocais.forEach(local => {
         selectLocais.insertAdjacentHTML("beforeend", `<option value="${local.id}">${local.nome}</option>`);
     });
-    
+};
+
+const preencheFeed = async () => {
     const responseMensagens = await fetch("api/Mensagens");
     const resultMensagens = await responseMensagens.json();
     const listaMensagens = document.getElementById("mensagens");
     resultMensagens.forEach(msg => {
-        listaMensagens.insertAdjacentHTML("beforeend", `<li>${msg.texto} <a class="curtir" data-controller="Mensagens" data-id="${msg.id}">👍 ${msg.curtidas}</a></li>`);
+        listaMensagens.insertAdjacentHTML("beforeend", 
+`<div class="mensagem-container">
+    <div class="mensagem-tipo">${msg.tipo.nome}</div>
+    <div class="mensagem-texto">${msg.texto}</div>
+    <a class="curtir" data-controller="Mensagens" data-id="${msg.id}">👍 ${msg.curtidas}</a>
+    <div>
+    <div class="mensagem-local">${msg.local.nome}</div>
+    <div class="mensagem-tema">${msg.tema.nome}</div>
+    </div>
+</div>`);
     });
+    document.querySelectorAll("a.curtir").forEach(btn => btn.addEventListener("click", curtir));
 };
 
 const configuraEventos = () => {
     document.getElementById("novo-confirmar").addEventListener("click", enviaMensagem);
-    document.querySelectorAll("a.curtir").forEach(btn => btn.addEventListener("click", curtir));
     document.getElementById("novo-abandonar").addEventListener("click", abandonar);
     document.getElementById("novo-detalhes-abrir").addEventListener("click", abrirDetalhes);
 };
