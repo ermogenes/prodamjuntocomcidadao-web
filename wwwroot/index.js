@@ -25,7 +25,6 @@ const abandonar = async (e) => {
 const curtir = async (e) => {
     e.preventDefault();
     const link = e.currentTarget;
-    console.log(e.currentTarget);
     const url = `api/${link.dataset.controller}/${link.dataset.id}/curtir`;
     if (!localStorage.getItem(`prodamjuntocomcidadao.curtida.${link.dataset.id}`))
     {
@@ -121,12 +120,8 @@ const preencheFeed = async () => {
     const listaMensagens = document.getElementById("mensagens");
     resultMensagens.forEach(msg => {
         var datahora = new Date(msg.data);
-        // console.log(msg.data);
-        // console.log(datahora);
+        // Fixo timezone West US #TODO refatorar para i18n
         var data = moment(datahora).add(-3, 'hours').fromNow();
-        // var data = moment(datahora, "DD/MM/YYYY hh:mm:ss").fromNow() === "Data inválida"
-        // ? moment(datahora, "MM/DD/YYYY hh:mm:ss").fromNow()
-        // : moment(datahora, "DD/MM/YYYY hh:mm:ss").fromNow();
         var score = msg.sentimentScore < 0.33 ? "🤬" : msg.sentimentScore > 0.66 ? "🥰" : "🤔"
         listaMensagens.insertAdjacentHTML("beforeend", 
 `<div class="mensagem-container">
