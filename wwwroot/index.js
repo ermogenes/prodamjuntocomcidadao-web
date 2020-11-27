@@ -110,9 +110,13 @@ const preencheFeed = async () => {
     const resultMensagens = await responseMensagens.json();
     const listaMensagens = document.getElementById("mensagens");
     resultMensagens.forEach(msg => {
-        var data = moment(msg.data, "DD/MM/YYYY hh:mm:ss").fromNow() === "Data inválida"
-        ? moment(msg.data, "MM/DD/YYYY hh:mm:ss").fromNow()
-        : moment(msg.data, "DD/MM/YYYY hh:mm:ss").fromNow();
+        var datahora = new Date(msg.data);
+        console.log(msg.data);
+        console.log(datahora);
+        var data = moment(datahora).fromNow();
+        // var data = moment(datahora, "DD/MM/YYYY hh:mm:ss").fromNow() === "Data inválida"
+        // ? moment(datahora, "MM/DD/YYYY hh:mm:ss").fromNow()
+        // : moment(datahora, "DD/MM/YYYY hh:mm:ss").fromNow();
         var score = msg.sentimentScore < 0.33 ? "🤬" : msg.sentimentScore > 0.66 ? "🥰" : "🤔"
         listaMensagens.insertAdjacentHTML("beforeend", 
 `<div class="mensagem-container">
