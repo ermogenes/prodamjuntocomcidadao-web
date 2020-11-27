@@ -25,6 +25,16 @@ namespace prodamjuntocomcidadao_web
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsApi",
+                    builder => builder
+                        .AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                );
+            });
+
             services.AddDbContext<db.prodamjuntocomcidadaoContext>(options => 
                 options.UseMySQL(Configuration.GetConnectionString("prodamjuntocomcidadaoConnection"))
             );
@@ -47,6 +57,8 @@ namespace prodamjuntocomcidadao_web
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseCors("CorsApi");
 
             app.UseAuthorization();
 

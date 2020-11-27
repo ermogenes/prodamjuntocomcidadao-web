@@ -10,11 +10,13 @@ using prodamjuntocomcidadao_web.Models;
 using System.Text;
 using System.Net.Http.Headers;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Cors;
 
 namespace prodamjuntocomcidadao_web.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [EnableCors("CorsApi")]
     public class MensagensController : ControllerBase
     {
         private readonly IConfiguration Configuration;

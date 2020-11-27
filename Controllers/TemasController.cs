@@ -2,11 +2,13 @@ using Microsoft.AspNetCore.Mvc;
 using prodamjuntocomcidadao_web.db;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Cors;
 
 namespace prodamjuntocomcidadao_web.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [EnableCors("CorsApi")]
     public class TemasController : ControllerBase
     {
         private prodamjuntocomcidadaoContext _db { get; set; }
