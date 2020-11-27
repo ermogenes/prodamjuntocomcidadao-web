@@ -121,8 +121,8 @@ const preencheFeed = async () => {
     const listaMensagens = document.getElementById("mensagens");
     resultMensagens.forEach(msg => {
         var datahora = new Date(msg.data);
-        console.log(msg.data);
-        console.log(datahora);
+        // console.log(msg.data);
+        // console.log(datahora);
         var data = moment(datahora).add(-3, 'hours').fromNow();
         // var data = moment(datahora, "DD/MM/YYYY hh:mm:ss").fromNow() === "Data inválida"
         // ? moment(datahora, "MM/DD/YYYY hh:mm:ss").fromNow()
