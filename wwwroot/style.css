@@ -138,3 +138,9 @@ a.discreto {
     padding: 10px;
     display: inline-block;
 }
+
+.mensagem-data {
+    font-size: 0.6em;
+    text-align: right;
+    padding: 0 10px 2px 0;
+}

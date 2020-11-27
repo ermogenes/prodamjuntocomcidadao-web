@@ -44,9 +44,6 @@ namespace prodamjuntocomcidadao_web.db
 
             modelBuilder.Entity<Mensagem>(entity =>
             {
-                entity.HasKey(e => new { e.Id, e.TipoId, e.LocalId, e.TemaId })
-                    .HasName("PRIMARY");
-
                 entity.ToTable("mensagem");
 
                 entity.HasIndex(e => e.LocalId)
@@ -62,9 +59,12 @@ namespace prodamjuntocomcidadao_web.db
                     .HasColumnName("id")
                     .HasMaxLength(36);
 
-                entity.Property(e => e.TipoId)
-                    .HasColumnName("tipo_id")
-                    .HasMaxLength(36);
+                entity.Property(e => e.Curtidas).HasColumnName("curtidas");
+
+                entity.Property(e => e.Data)
+                    .IsRequired()
+                    .HasColumnName("data")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.LocalId)
                     .HasColumnName("local_id")
@@ -74,29 +74,28 @@ namespace prodamjuntocomcidadao_web.db
                     .HasColumnName("tema_id")
                     .HasMaxLength(36);
 
-                entity.Property(e => e.Curtidas).HasColumnName("curtidas");
-
                 entity.Property(e => e.Texto)
                     .IsRequired()
                     .HasColumnName("texto")
                     .HasMaxLength(400);
 
+                entity.Property(e => e.TipoId)
+                    .HasColumnName("tipo_id")
+                    .HasMaxLength(36);
+
                 entity.HasOne(d => d.Local)
                     .WithMany(p => p.Mensagem)
                     .HasForeignKey(d => d.LocalId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_mensagem_local1");
 
                 entity.HasOne(d => d.Tema)
                     .WithMany(p => p.Mensagem)
                     .HasForeignKey(d => d.TemaId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_mensagem_tema1");
 
                 entity.HasOne(d => d.Tipo)
                     .WithMany(p => p.Mensagem)
                     .HasForeignKey(d => d.TipoId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_mensagem_tipo");
             });
 

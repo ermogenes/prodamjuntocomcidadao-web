@@ -112,12 +112,13 @@ const preencheFeed = async () => {
     resultMensagens.forEach(msg => {
         listaMensagens.insertAdjacentHTML("beforeend", 
 `<div class="mensagem-container">
-    <div class="mensagem-tipo">${msg.tipo.nome}</div>
+    <div class="mensagem-tipo">${msg.tipo?.nome || ""}</div>
     <div class="mensagem-texto">${msg.texto}</div>
     <a class="curtir" data-controller="Mensagens" data-id="${msg.id}">👍 ${msg.curtidas}</a>
     <div>
-    <div class="mensagem-local">${msg.local.nome}</div>
-    <div class="mensagem-tema">${msg.tema.nome}</div>
+    <div class="mensagem-local">${msg.local?.nome || ""}</div>
+    <div class="mensagem-tema">${msg.tema?.nome || ""}</div>
+    <div class="mensagem-data">${moment(msg.data, "DD/MM/YYYY").fromNow() || ""}</div>
     </div>
 </div>`);
     });

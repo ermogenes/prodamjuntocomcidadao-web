@@ -49,6 +49,23 @@ namespace prodamjuntocomcidadao_web.Controllers
         {
             mensagem.Id = System.Guid.NewGuid().ToString();
             mensagem.Curtidas = 0;
+            mensagem.Data = System.DateTime.Now.ToString();
+
+            if (string.IsNullOrEmpty(mensagem.LocalId))
+            {
+                mensagem.LocalId = null;
+            }
+
+            if (string.IsNullOrEmpty(mensagem.TemaId))
+            {
+                mensagem.TemaId = null;
+            }
+
+            if (string.IsNullOrEmpty(mensagem.TipoId))
+            {
+                mensagem.TipoId = null;
+            }
+
             _db.Add(mensagem);
             _db.SaveChanges();
             return CreatedAtAction(nameof(ObtemMensagens), null, mensagem);
