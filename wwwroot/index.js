@@ -113,6 +113,7 @@ const preencheFeed = async () => {
         var data = moment(msg.data, "DD/MM/YYYY").fromNow() === "Data inválida"
         ? moment(msg.data, "MM/DD/YYYY").fromNow()
         : moment(msg.data, "DD/MM/YYYY").fromNow();
+        var score = msg.sentimentScore < 0.33 ? "🤬" : msg.sentimentScore > 0.66 ? "🥰" : "🤔"
         listaMensagens.insertAdjacentHTML("beforeend", 
 `<div class="mensagem-container">
     <div class="mensagem-tipo">${msg.tipo?.nome || ""}</div>
@@ -122,6 +123,7 @@ const preencheFeed = async () => {
     <div class="mensagem-local">${msg.local?.nome || ""}</div>
     <div class="mensagem-tema">${msg.tema?.nome || ""}</div>
     <div class="mensagem-data">${data || ""}</div>
+    <div class="mensagem-score">${score || ""}</div>
     </div>
 </div>`);
     });

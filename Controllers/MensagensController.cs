@@ -3,6 +3,13 @@ using prodamjuntocomcidadao_web.db;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+using System.Net.Http;
+using Newtonsoft.Json;
+using prodamjuntocomcidadao_web.Models;
+using System.Text;
+using System.Net.Http.Headers;
+using Microsoft.Extensions.Configuration;
 
 namespace prodamjuntocomcidadao_web.Controllers
 {
@@ -10,10 +17,12 @@ namespace prodamjuntocomcidadao_web.Controllers
     [Route("api/[controller]")]
     public class MensagensController : ControllerBase
     {
+        private readonly IConfiguration Configuration;
         private prodamjuntocomcidadaoContext _db { get; set; }
-        public MensagensController(prodamjuntocomcidadaoContext contexto)
+        public MensagensController(prodamjuntocomcidadaoContext contexto, IConfiguration configuration)
         {
             _db = contexto;
+            Configuration = configuration;
         }
 
         [HttpGet]
@@ -45,9 +54,39 @@ namespace prodamjuntocomcidadao_web.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Mensagem> IncluiMensagem(Mensagem mensagem)
-        {
-            mensagem.Id = System.Guid.NewGuid().ToString();
+        public async Task<ActionResult<Mensagem>> IncluiMensagem(Mensagem mensagem)
+        {            
+            string endpoint = "https://prodamjuntocomcidadao-cog-services.cognitiveservices.azure.com/text/analytics/v2.0/sentiment";
+
+            using (var httpClient = new HttpClient())
+            {
+                mensagem.Id = System.Guid.NewGuid().ToString();
+
+                httpClient.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", Configuration["CogApiKey"]);
+
+                var jsonContent = JsonConvert.SerializeObject(new SentimentDocumentsModel {
+                        documents = new List<Documents> {
+                            new Documents {
+                            id = mensagem.Id,
+                            text = mensagem.Texto,
+                            language = "pt",
+                            }
+                        }
+                    }
+                );
+
+                var contentString = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+                contentString.Headers.ContentType = new MediaTypeHeaderValue("application/json"); 
+
+                using (var response = await httpClient.PostAsync(endpoint, contentString))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    // System.Console.WriteLine(apiResponse);
+                    var result = JsonConvert.DeserializeObject<SentimentDocumentsModel>(apiResponse);
+                    mensagem.SentimentScore = result.documents[0].score;
+                }
+            }
+
             mensagem.Curtidas = 0;
             mensagem.Data = System.DateTime.Now.ToString();
 

@@ -144,3 +144,9 @@ a.discreto {
     text-align: right;
     padding: 0 10px 2px 0;
 }
+
+.mensagem-container .mensagem-score {
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+}

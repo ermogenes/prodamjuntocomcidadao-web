@@ -12,6 +12,7 @@ namespace prodamjuntocomcidadao_web.db
         public string LocalId { get; set; }
         public string TemaId { get; set; }
         public string Data { get; set; }
+        public double? SentimentScore { get; set; }
 
         public virtual Local Local { get; set; }
         public virtual Tema Tema { get; set; }

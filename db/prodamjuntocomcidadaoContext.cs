@@ -22,6 +22,9 @@ namespace prodamjuntocomcidadao_web.db
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            if (!optionsBuilder.IsConfigured)
+            {
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -69,6 +72,8 @@ namespace prodamjuntocomcidadao_web.db
                 entity.Property(e => e.LocalId)
                     .HasColumnName("local_id")
                     .HasMaxLength(36);
+
+                entity.Property(e => e.SentimentScore).HasColumnName("sentiment_score");
 
                 entity.Property(e => e.TemaId)
                     .HasColumnName("tema_id")
