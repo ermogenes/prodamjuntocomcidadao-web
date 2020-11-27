@@ -4,6 +4,10 @@ Repositório do projeto [prodamjuntocomcidadao], Hackathon Prodam 2020/11.
 
 ![Prodam Junto com Cidadão](wwwroot/logo.juntocomocidadao-dark.svg)
 
+- [💻 Aplicação](https://prodamjuntocomcidadao.azurewebsites.net/)
+- [🐱‍💻 Código-fonte (web)](https://github.com/ermogenes/prodamjuntocomcidadao-web)
+- [🛢 Banco de dados](https://github.com/ermogenes/prodamjuntocomcidadao-mysql)
+
 ## Proposta
 
 Criar um canal de comunicação entre o Cidadão e a Prefeitura do Município de São Paulo.
@@ -26,7 +30,7 @@ Existe uma dificuldade de comunicação entre o cidadão e a Prefeitura de São 
 
 ## Desenho da Solução
 
-A solução web estará hospedada na nuvem Azure, usando o serviço de aplicativos (modelo PaaS). Será desenvolvida em .NET Core, HTML, CSS e JavaScript, com banco de dados MySQL (100% software livre). Os fontes estarão disponíveis no GitHub, e serão publicados usando entrega contínua usando a integração do Azure com o GitHub Actions.
+A solução web estará hospedada na nuvem Azure, usando o serviço de aplicativos (modelo PaaS). Será desenvolvida em .NET Core, HTML, CSS e JavaScript, com banco de dados MySQL (100% software livre). Os fontes estarão disponíveis no GitHub, e serão publicados usando entrega contínua usando a integração do Azure com o GitHub Actions. A análise de sentimentos será criada com Azure Cognitive Services.
 
 Será utilizada React Native para o app _mobile_.
 
