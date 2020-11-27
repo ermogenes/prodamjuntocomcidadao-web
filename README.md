@@ -25,10 +25,10 @@ A solução estará hospedada na nuvem Azure, usando o serviço de aplicativos (
 
 ## Participantes
 
-Brunno Henrique de Salve Agostinho
-Ermogenes Daniel Palacio
-Lucia Satiko Murotani
-Miriam Mitie Miyashiro
-Rebeca Tami Santana Osanai
-Thiago Duarte Lemes Barreto
-Viviane Lisboa dos Santos Oliveira
+- Brunno Henrique de Salve Agostinho
+- Ermogenes Daniel Palacio
+- Lucia Satiko Murotani
+- Miriam Mitie Miyashiro
+- Rebeca Tami Santana Osanai
+- Thiago Duarte Lemes Barreto
+- Viviane Lisboa dos Santos Oliveira
