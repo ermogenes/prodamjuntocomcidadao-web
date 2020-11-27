@@ -122,8 +122,9 @@ const preencheFeed = async () => {
     resultMensagens.forEach(msg => {
         var datahora = new Date(msg.data);
         // Fixo timezone West US #TODO refatorar para i18n
-        var data = moment(datahora).add(-3, 'hours').fromNow();
-        var score = msg.sentimentScore < 0.33 ? "🤬" : msg.sentimentScore > 0.66 ? "🥰" : "🤔"
+        const data = moment(datahora).add(-3, 'hours').fromNow();
+        const emoji = msg.sentimentScore < 0.33 ? "🤬" : msg.sentimentScore > 0.66 ? "🥰" : "🤔";
+        const score = (msg.sentimentScore * 100).toFixed(2);
         listaMensagens.insertAdjacentHTML("beforeend", 
 `<div class="mensagem-container">
     <div class="mensagem-tipo">${msg.tipo?.nome || ""}</div>
@@ -133,7 +134,7 @@ const preencheFeed = async () => {
     <div class="mensagem-local">${msg.local?.nome || ""}</div>
     <div class="mensagem-tema">${msg.tema?.nome || ""}</div>
     <div class="mensagem-data">${data || ""}</div>
-    <div class="mensagem-score">${score || ""}</div>
+    <div class="mensagem-score"><span alt="${emoji || ""} (${score}%)">${emoji || ""}</span></div>
     </div>
 </div>`);
     });
