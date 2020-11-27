@@ -56,6 +56,16 @@ const enviaMensagem = async (e) => {
         "Texto": document.getElementById("novo-texto")?.value,
     };
 
+    if (!mensagem.Texto) {
+        alert("Por favor, digite uma mensagem.");
+        return;
+    }
+
+    if (mensagem.Texto.length > 400) {
+        alert("Por favor, digite uma mensagem com até 400 caracteres.");
+        return;
+    }
+
     const response = await fetch("api/Mensagens", {
         method: "POST",
         headers: {
@@ -113,7 +123,7 @@ const preencheFeed = async () => {
         var datahora = new Date(msg.data);
         console.log(msg.data);
         console.log(datahora);
-        var data = moment(datahora).fromNow();
+        var data = moment(datahora).tz("America/Los_Angeles").fromNow();
         // var data = moment(datahora, "DD/MM/YYYY hh:mm:ss").fromNow() === "Data inválida"
         // ? moment(datahora, "MM/DD/YYYY hh:mm:ss").fromNow()
         // : moment(datahora, "DD/MM/YYYY hh:mm:ss").fromNow();
