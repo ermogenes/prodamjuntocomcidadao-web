@@ -46,7 +46,6 @@ const enviaMensagem = async (e) => {
     e.preventDefault();
 
     const botao = document.getElementById("novo-abandonar");
-    botao.innerHTML = "carregando...";
 
     const mensagem = {
         "TipoId": document.getElementById("novo-tipo")?.value,
@@ -64,6 +63,8 @@ const enviaMensagem = async (e) => {
         alert("Por favor, digite uma mensagem com até 400 caracteres.");
         return;
     }
+
+    botao.innerHTML = "carregando...";
 
     const response = await fetch("api/Mensagens", {
         method: "POST",
