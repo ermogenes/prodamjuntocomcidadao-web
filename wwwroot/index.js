@@ -110,7 +110,7 @@ const preencheFeed = async () => {
     const resultMensagens = await responseMensagens.json();
     const listaMensagens = document.getElementById("mensagens");
     resultMensagens.forEach(msg => {
-        var data = moment(msg.data, "DD/MM/YYYY").fromNow() === "Data Inválida"
+        var data = moment(msg.data, "DD/MM/YYYY").fromNow() === "Data inválida"
         ? moment(msg.data, "MM/DD/YYYY").fromNow()
         : moment(msg.data, "DD/MM/YYYY").fromNow();
         listaMensagens.insertAdjacentHTML("beforeend", 
