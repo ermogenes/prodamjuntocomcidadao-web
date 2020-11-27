@@ -21,3 +21,14 @@ Existe uma dificuldade de comunicação entre o cidadão e a Prefeitura de São 
 
 ## Desenho da Solução
 A solução estará hospedada na nuvem Azure, usando o serviço de aplicativos (modelo PaaS). Será desenvolvida em .NET Core, HTML, CSS e JavaScript, com banco de dados MySQL. Os fontes estarão disponíveis no GitHub, e serão publicados usando entrega contínua usando a integração do Azure com o GitHub Actions. Será utilizada React Native para o app. Os dados serão analisados através do PowerBI.
+
+
+## Participantes
+
+Brunno Henrique de Salve Agostinho
+Ermogenes Daniel Palacio
+Lucia Satiko Murotani
+Miriam Mitie Miyashiro
+Rebeca Tami Santana Osanai
+Thiago Duarte Lemes Barreto
+Viviane Lisboa dos Santos Oliveira
