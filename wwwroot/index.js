@@ -110,6 +110,9 @@ const preencheFeed = async () => {
     const resultMensagens = await responseMensagens.json();
     const listaMensagens = document.getElementById("mensagens");
     resultMensagens.forEach(msg => {
+        var data = moment(msg.data, "DD/MM/YYYY").fromNow() === "Data Inválida"
+        ? moment(msg.data, "MM/DD/YYYY").fromNow()
+        : moment(msg.data, "DD/MM/YYYY").fromNow();
         listaMensagens.insertAdjacentHTML("beforeend", 
 `<div class="mensagem-container">
     <div class="mensagem-tipo">${msg.tipo?.nome || ""}</div>
@@ -118,7 +121,7 @@ const preencheFeed = async () => {
     <div>
     <div class="mensagem-local">${msg.local?.nome || ""}</div>
     <div class="mensagem-tema">${msg.tema?.nome || ""}</div>
-    <div class="mensagem-data">${moment(msg.data, "DD/MM/YYYY").fromNow() || ""}</div>
+    <div class="mensagem-data">${data || ""}</div>
     </div>
 </div>`);
     });
