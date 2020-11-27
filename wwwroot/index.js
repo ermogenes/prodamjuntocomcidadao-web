@@ -123,7 +123,7 @@ const preencheFeed = async () => {
         var datahora = new Date(msg.data);
         console.log(msg.data);
         console.log(datahora);
-        var data = moment(datahora).tz("America/Los_Angeles").fromNow();
+        var data = moment(datahora).add(-3, 'hours').fromNow();
         // var data = moment(datahora, "DD/MM/YYYY hh:mm:ss").fromNow() === "Data inválida"
         // ? moment(datahora, "MM/DD/YYYY hh:mm:ss").fromNow()
         // : moment(datahora, "DD/MM/YYYY hh:mm:ss").fromNow();
