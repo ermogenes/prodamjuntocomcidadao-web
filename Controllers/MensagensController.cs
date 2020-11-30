@@ -35,6 +35,7 @@ namespace prodamjuntocomcidadao_web.Controllers
                 .Include(msg => msg.Tema)
                 .Include(msg => msg.Tipo)
                 .OrderByDescending(msg => msg.Curtidas)
+                    .ThenByDescending(msg => msg.Data)
                 .Skip(skip)
                 .Take(25)
                 .ToList<Mensagem>();
