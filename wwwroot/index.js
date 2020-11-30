@@ -14,7 +14,7 @@ const abandonar = async (e) => {
     const feed = document.getElementById("feed");
     feed.classList.remove("invisivel");
 
-    preencheFeed();
+    if (!executando) preencheFeed();
 
     const novo = document.getElementById("nova-mensagem");
     novo.outerHTML = "";
@@ -116,9 +116,10 @@ const preencheListas = async () => {
 };
 
 const preencheFeed = async () => {
+    executando = true;
     const responseMensagens = await fetch(`api/Mensagens?skip=${skipMensagens}`);
-    if (responseMensagens.ok) skipMensagens += 10;
     const resultMensagens = await responseMensagens.json();
+    if (responseMensagens.ok && resultMensagens.length > 0) skipMensagens += 10;
     const listaMensagens = document.getElementById("mensagens");
     resultMensagens.forEach(msg => {
         var datahora = new Date(msg.data);
@@ -140,6 +141,7 @@ const preencheFeed = async () => {
 </div>`);
     });
     document.querySelectorAll("a.curtir").forEach(btn => btn.addEventListener("click", curtir));
+    executando = false;
 };
 
 const configuraEventos = () => {
@@ -149,7 +151,7 @@ const configuraEventos = () => {
 
     window.addEventListener('scroll', function() {
         if (document.documentElement.scrollTop + document.documentElement.clientHeight >= document.documentElement.scrollHeight) {
-            preencheFeed();
+            if (!executando) preencheFeed();
         }
     });
 };
@@ -160,5 +162,6 @@ const iniciar = async () => {
 };
 
 var skipMensagens = 0;
+var executando = false;
 
 document.addEventListener("DOMContentLoaded", iniciar);
