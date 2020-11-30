@@ -37,7 +37,7 @@ namespace prodamjuntocomcidadao_web.Controllers
                 .OrderByDescending(msg => msg.Curtidas)
                     .ThenByDescending(msg => msg.Data)
                 .Skip(skip)
-                .Take(25)
+                .Take(10)
                 .ToList<Mensagem>();
             return Ok(todasAsMensagens);
         }
