@@ -8,6 +8,7 @@ Repositório do projeto [prodamjuntocomcidadao], Hackathon Prodam 2020/11.
 - [🐱‍💻 Código-fonte (web)](https://github.com/ermogenes/prodamjuntocomcidadao-web)
 - [📱 Código-fonte (app)](https://github.com/thidulb/Junto-com-cidadao-App)
 - [🛢 Banco de dados](https://github.com/ermogenes/prodamjuntocomcidadao-mysql)
+- [📈 Painel BI](https://app.powerbi.com/groups/dab57a6a-1238-49b9-9e77-dded825672e1/reports/00de1a4a-b1b6-4b1e-96aa-c8b65fc9fb81/ReportSection)
 
 ## Proposta
 
