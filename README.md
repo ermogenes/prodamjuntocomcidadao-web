@@ -9,8 +9,6 @@ Repositório do projeto [prodamjuntocomcidadao], Hackathon Prodam 2020/11.
 - [📱 Código-fonte (app)](https://github.com/thidulb/Junto-com-cidadao-App)
 - [🛢 Banco de dados](https://github.com/ermogenes/prodamjuntocomcidadao-mysql)
 
-![Hackathon Prodam 2020](wwwroot/logo.hackathon2020.png)
-
 ## Proposta
 
 Criar um canal de comunicação entre o Cidadão e a Prefeitura do Município de São Paulo.
@@ -48,3 +46,5 @@ Os dados serão analisados através do PowerBI.
 - Rebeca Tami Santana Osanai
 - Thiago Duarte Lemes Barreto
 - Viviane Lisboa dos Santos Oliveira
+
+![Hackathon Prodam 2020](wwwroot/logo.hackathon2020.png)
