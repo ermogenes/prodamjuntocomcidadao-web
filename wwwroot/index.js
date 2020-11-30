@@ -84,9 +84,9 @@ const preencheListas = async () => {
     const responseTemas = await fetch("api/Temas");
     const resultTemas = await responseTemas.json();
     const listaTemas = document.getElementById("temas");
-    resultTemas.forEach(tema => {
-        listaTemas.insertAdjacentHTML("beforeend", `<li>${tema.nome} <a class="curtir" data-controller="Temas" data-id="${tema.id}">👍 ${tema.curtidas}</a></li>`);
-    });
+    // resultTemas.forEach(tema => {
+    //     listaTemas.insertAdjacentHTML("beforeend", `<li>${tema.nome} <a class="curtir" data-controller="Temas" data-id="${tema.id}">👍 ${tema.curtidas}</a></li>`);
+    // });
     const selectTemas = document.getElementById("novo-tema");
     resultTemas.forEach(tema => {
         selectTemas.insertAdjacentHTML("beforeend", `<option value="${tema.id}">${tema.nome}</option>`);
@@ -94,10 +94,10 @@ const preencheListas = async () => {
 
     const responseTipos = await fetch("api/Tipos");
     const resultTipos = await responseTipos.json();
-    const listaTipos = document.getElementById("tipos");
-    resultTipos.forEach(tipo => {
-        listaTipos.insertAdjacentHTML("beforeend", `<li>${tipo.nome} <a class="curtir" data-controller="Tipos" data-id="${tipo.id}">👍 ${tipo.curtidas}</a></li>`);
-    });
+    // const listaTipos = document.getElementById("tipos");
+    // resultTipos.forEach(tipo => {
+    //     listaTipos.insertAdjacentHTML("beforeend", `<li>${tipo.nome} <a class="curtir" data-controller="Tipos" data-id="${tipo.id}">👍 ${tipo.curtidas}</a></li>`);
+    // });
     const selectTipos = document.getElementById("novo-tipo");
     resultTipos.forEach(tipo => {
         selectTipos.insertAdjacentHTML("beforeend", `<option value="${tipo.id}">${tipo.nome}</option>`);
@@ -105,10 +105,10 @@ const preencheListas = async () => {
     
     const responseLocais = await fetch("api/Locais");
     const resultLocais = await responseLocais.json();
-    const listaLocais = document.getElementById("locais");
-    resultLocais.forEach(local => {
-        listaLocais.insertAdjacentHTML("beforeend", `<li>${local.nome} <a class="curtir" data-controller="Locais" data-id="${local.id}">👍 ${local.curtidas}</a></li>`);
-    });
+    // const listaLocais = document.getElementById("locais");
+    // resultLocais.forEach(local => {
+    //     listaLocais.insertAdjacentHTML("beforeend", `<li>${local.nome} <a class="curtir" data-controller="Locais" data-id="${local.id}">👍 ${local.curtidas}</a></li>`);
+    // });
     const selectLocais = document.getElementById("novo-local");
     resultLocais.forEach(local => {
         selectLocais.insertAdjacentHTML("beforeend", `<option value="${local.id}">${local.nome}</option>`);
@@ -116,7 +116,8 @@ const preencheListas = async () => {
 };
 
 const preencheFeed = async () => {
-    const responseMensagens = await fetch("api/Mensagens");
+    const responseMensagens = await fetch(`api/Mensagens?skip=${skipMensagens}`);
+    if (responseMensagens.ok) skipMensagens += 10;
     const resultMensagens = await responseMensagens.json();
     const listaMensagens = document.getElementById("mensagens");
     resultMensagens.forEach(msg => {
@@ -145,11 +146,19 @@ const configuraEventos = () => {
     document.getElementById("novo-confirmar").addEventListener("click", enviaMensagem);
     document.getElementById("novo-abandonar").addEventListener("click", abandonar);
     document.getElementById("novo-detalhes-abrir").addEventListener("click", abrirDetalhes);
+
+    window.addEventListener('scroll', function() {
+        if (document.documentElement.scrollTop + document.documentElement.clientHeight >= document.documentElement.scrollHeight) {
+            preencheFeed();
+        }
+    });
 };
 
 const iniciar = async () => {
     preencheListas()
         .then(() => configuraEventos());
 };
+
+var skipMensagens = 0;
 
 document.addEventListener("DOMContentLoaded", iniciar);

@@ -28,13 +28,14 @@ namespace prodamjuntocomcidadao_web.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Mensagem>> ObtemMensagens()
+        public ActionResult<List<Mensagem>> ObtemMensagens(int skip = 0)
         {
             var todasAsMensagens = _db.Mensagem
                 .Include(msg => msg.Local)
                 .Include(msg => msg.Tema)
                 .Include(msg => msg.Tipo)
                 .OrderByDescending(msg => msg.Curtidas)
+                .Skip(skip)
                 .Take(25)
                 .ToList<Mensagem>();
             return Ok(todasAsMensagens);
