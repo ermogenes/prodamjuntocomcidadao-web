@@ -5,7 +5,7 @@ Repositório do projeto [prodamjuntocomcidadao], Hackathon Prodam 2020/11.
 ![Prodam Junto com Cidadão](wwwroot/logo.juntocomocidadao-dark.svg)
 
 - [💻 Aplicação em produção](https://prodamjuntocomcidadao.azurewebsites.net/)
-- [🐱‍💻 Código-fonte (web)](https://github.com/ermogenes/prodamjuntocomcidadao-web)
+- [🐱‍💻 Código-fonte (web)](https://github.com/ermogenes/prodamjuntocomcidadao-web) e [📺 Apresentação no YouTube](https://youtu.be/NC6BnqZn5Z8)
 - [📱 Código-fonte (app)](https://github.com/thidulb/Junto-com-cidadao-App)
 - [🛢 Banco de dados](https://github.com/ermogenes/prodamjuntocomcidadao-mysql)
 - [📈 Painel BI](https://app.powerbi.com/groups/dab57a6a-1238-49b9-9e77-dded825672e1/reports/00de1a4a-b1b6-4b1e-96aa-c8b65fc9fb81/ReportSection)
@@ -47,5 +47,7 @@ Os dados serão analisados através do PowerBI.
 - Rebeca Tami Santana Osanai
 - Thiago Duarte Lemes Barreto
 - Viviane Lisboa dos Santos Oliveira
+
+![Equipe - Teams](wwwroot/equipe-teams.png)
 
 ![Hackathon Prodam 2020](wwwroot/logo.hackathon2020.png)
