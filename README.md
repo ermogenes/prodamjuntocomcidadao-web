@@ -1,6 +1,6 @@
 # prodamjuntocomcidadao-web
 
-Repositório do projeto [prodamjuntocomcidadao], Hackathon Prodam 2020/11.
+🥇 Repositório do projeto [prodamjuntocomcidadao], VENCEDOR do Hackathon Prodam 2020/11.
 
 ![Prodam Junto com Cidadão](wwwroot/logo.juntocomocidadao-dark.svg)
 
